@@ -1,0 +1,366 @@
+/* 主容器样式 */
+.shi-container {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+/* 卡片样式 */
+.shi-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+.shi-card h2 {
+    margin: 0;
+    padding: 15px;
+    border-bottom: 1px solid #ccd0d4;
+    font-size: 14px;
+    line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shi-card-content {
+    padding: 15px;
+}
+
+/* 表单样式 */
+.shi-form-row {
+    margin-bottom: 15px;
+}
+
+.shi-form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.shi-form-row input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.shi-form-row .description {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* 进度条样式 */
+.shi-progress-bar {
+    height: 24px;
+    background: #f0f0f1;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.shi-progress-bar-inner {
+    height: 100%;
+    background: #2271b1;
+    border-radius: 12px;
+    transition: width 0.3s ease;
+    position: relative;
+    min-width: 24px;
+}
+
+.shi-progress-text {
+    position: absolute;
+    right: 10px;
+    color: #fff;
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* 统计数据样式 */
+.shi-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.shi-stat-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.shi-stat-label {
+    display: block;
+    color: #646970;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.shi-stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+/* 日志查看器样式 */
+.shi-log-container {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.shi-log-container pre {
+    margin: 0;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+/* 模态框样式 */
+.shi-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shi-modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 3px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.shi-modal-content h3 {
+    margin: 0 0 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.shi-modal-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* 日志级别颜色 */
+.shi-log-error {
+    color: #d63638;
+}
+
+.shi-log-warning {
+    color: #dba617;
+}
+
+.shi-log-success {
+    color: #00a32a;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 782px) {
+    .shi-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .shi-stat-value {
+        font-size: 20px;
+    }
+    
+    .shi-card h2 {
+        padding: 12px;
+    }
+    
+    .shi-card-content {
+        padding: 12px;
+    }
+}
+
+/* 加载动画 */
+.shi-loading {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.shi-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #2271b1;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: shi-spin 1s linear infinite;
+}
+
+@keyframes shi-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 按钮样式 */
+.shi-refresh-logs {
+    margin-left: 10px !important;
+}
+
+/* 错误提示 */
+.shi-error {
+    border-color: #d63638 !important;
+}
+
+.shi-error-message {
+    color: #d63638;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* 添加到现有样式中 */
+.shi-notice-warning {
+    background: #fff8e5;
+    border-left: 4px solid #ffb900;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.shi-notice-warning p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.shi-cancel-import {
+    color: #dc3232 !important;
+    border-color: #dc3232 !important;
+}
+
+.shi-cancel-import:hover {
+    background: #dc3232 !important;
+    color: #fff !important;
+}
+
+/* 添加到现有样式中 */
+.shi-resume-import {
+    margin-right: 10px !important;
+}
+
+.shi-notice-warning p button {
+    margin-left: 10px;
+}
+
+.shi-notice-warning p {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 添加到现有样式中 */
+.shi-log-content {
+    background: #f8f9fa;
+    border: 1px solid #e2e4e7;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.shi-progress-container {
+    margin-bottom: 20px;
+}
+
+.shi-progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.shi-progress-title {
+    font-weight: 500;
+}
+
+.shi-progress-count {
+    color: #666;
+}
+
+/* 设置卡片样式 */
+#shi-settings-section {
+    margin-top: 20px;
+}
+
+#shi-settings-section .shi-form-row {
+    margin-bottom: 15px;
+}
+
+#shi-settings-section .description {
+    margin-top: 5px;
+    color: #666;
+}
+
+/* Sitemap 相关样式 */
+#shi-sitemap-section {
+    margin-bottom: 20px;
+}
+
+.shi-sitemap-url {
+    background: #f0f0f1;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-family: monospace;
+    margin: 0 10px;
+}
+
+.shi-copy-url {
+    vertical-align: middle !important;
+}
+
+.shi-sitemap-tips {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-left: 4px solid #2271b1;
+    border-radius: 2px;
+}
+
+.shi-sitemap-tips h4 {
+    margin: 0 0 10px 0;
+    color: #1d2327;
+}
+
+.shi-sitemap-tips ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.shi-sitemap-tips li {
+    margin-bottom: 5px;
+    color: #50575e;
+}
+
+.shi-sitemap-tips li:last-child {
+    margin-bottom: 0;
+}
