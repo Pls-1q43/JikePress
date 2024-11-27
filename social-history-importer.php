@@ -3,7 +3,7 @@
  * Plugin Name: JikePress
  * Plugin URI: https://1q43.blog/post/10650/
  * Description: 从即刻导入历史动态、同步动态到 Buddypress，你的自部署社交网络备份。
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: 评论尸
  * Author URI: https://1q43.blog
  * License: GPL-2.0+
@@ -20,12 +20,26 @@ if (!defined('ABSPATH')) {
 }
 
 // 定义插件常量
-define('SHI_VERSION', '1.2.0');
+define('SHI_VERSION', '1.2.1');
 define('SHI_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SHI_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SHI_PLUGIN_BASENAME', plugin_basename(__FILE__));
-define('SHI_GITHUB_REPO', 'github.com/Pls-1q43/JikePress'); // 替换为实际的 Github 仓库
-define('SHI_GITHUB_ACCESS_TOKEN', ''); // 如果是私有仓库，需要设置访问令牌
+
+// 在插件初始化之前添加更新检查器
+require plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+    'https://github.com/Pls-1q43/JikePress/',  // 替换为你的 GitHub 仓库地址
+    __FILE__,
+    'jikepress'  // 插件的唯一标识符
+);
+
+// 设置包含稳定版本的分支
+$myUpdateChecker->setBranch('main'); // 或者 'master', 取决于你的默认分支名称
+
+// 如果是私有仓库,需要设置访问令牌
+// $myUpdateChecker->setAuthentication('你的-token');
 
 /**
  * 插件主类
@@ -83,7 +97,7 @@ class Social_History_Importer {
     /**
      * 插件激活时的操作
      */
-    public function activate() {
+    public function activate($network_wide) {
         // 检查依赖
         if (!$this->check_dependencies()) {
             deactivate_plugins(plugin_basename(__FILE__));
@@ -95,7 +109,7 @@ class Social_History_Importer {
         }
         
         // 刷新重写规则
-        SHI_Sitemap::flush_rewrite_rules();
+        flush_rewrite_rules();
     }
 
     /**
