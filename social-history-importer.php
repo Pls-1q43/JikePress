@@ -3,7 +3,7 @@
  * Plugin Name: JikePress
  * Plugin URI: https://1q43.blog/post/10650/
  * Description: 从即刻导入历史动态、同步动态到 Buddypress，你的自部署社交网络备份。
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: 评论尸
  * Author URI: https://1q43.blog
  * License: GPL-2.0+
@@ -20,10 +20,12 @@ if (!defined('ABSPATH')) {
 }
 
 // 定义插件常量
-define('SHI_VERSION', '1.0.0');
+define('SHI_VERSION', '1.2.0');
 define('SHI_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SHI_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SHI_PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('SHI_GITHUB_REPO', 'github.com/Pls-1q43/JikePress'); // 替换为实际的 Github 仓库
+define('SHI_GITHUB_ACCESS_TOKEN', ''); // 如果是私有仓库，需要设置访问令牌
 
 /**
  * 插件主类
